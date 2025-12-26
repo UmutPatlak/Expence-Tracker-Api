@@ -1,4 +1,4 @@
-Expense Tracker API – Description
+Expense Tracker API 
 
 Expense Tracker API is a backend service that helps users track, manage, and analyze their personal or business expenses efficiently.
 Secure user authentication (JWT-based login/register)
