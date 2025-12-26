@@ -10,7 +10,7 @@ Monthly/Yearly spending summaries
 Data persistence using relational databases
 API documentation via Swagger/OpenAPI
 
-Technical Stack Example
+Technical Stack 
 
 Java 17+
 Spring Boot 3
