@@ -16,7 +16,7 @@ public class Wallet {
         @Getter
         @Setter
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private int id ;
+        private Integer id ;
             @Getter
             @Setter
             @Column(name = "wage")
@@ -30,8 +30,10 @@ public class Wallet {
         @Column(name = "account")
         private double account;
          @Getter
-        @Column(name = "dateNow")    //borc var mi booleani koyabilriiz buraya
-        private LocalDateTime dateNow; // walleti actigimiz sure olsun ama yazilamasin sadecve get al
+         @Setter
+
+         @Column(name = "date_now")
+         private LocalDateTime dateNow;
          @Getter
            @Setter
           @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)

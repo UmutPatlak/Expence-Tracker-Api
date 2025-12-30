@@ -9,26 +9,32 @@ import java.util.List;
 
 @Entity
 @Table(name = "category")
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Category {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    @Column(name = "description")
-    private String decsription;
+    private Integer id;
+
+    @Column(name = "description", nullable = false)
+    private String description;
+
     @Column(name = "description_2")
     private String description2;
 
+    @Column(name = "user_id", nullable = false)
+    private Integer userId;
 
-    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "wallet_id")
     private Wallet wallet;
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
 
-    @OneToMany(fetch = FetchType.LAZY)
-    private List<Expense> expense;
-
-
+    public Category getCategory() { return category; }
+    public void setCategory(Category category) { this.category = category; }
 
 }

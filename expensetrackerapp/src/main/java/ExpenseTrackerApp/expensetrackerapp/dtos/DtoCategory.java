@@ -10,10 +10,10 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class DtoCategory {
-    private String decsription;
+    private Integer id;
+    private String description;
     private String description2;
-    private DtoWallet dtoWallet;
-    private List<DtoExpense> dtoExpense;
-
-
+    private Integer userId;
+    private Integer walletId;
+    private List<DtoExpense> expenses;
 }

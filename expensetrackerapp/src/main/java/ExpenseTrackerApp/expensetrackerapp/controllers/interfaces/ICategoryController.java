@@ -1,13 +1,17 @@
 package ExpenseTrackerApp.expensetrackerapp.controllers.interfaces;
 
 import ExpenseTrackerApp.expensetrackerapp.dtos.DtoCategory;
-import ExpenseTrackerApp.expensetrackerapp.entities.Category;
+import ExpenseTrackerApp.expensetrackerapp.dtos.IU.DtoCategoryIU;
 import org.springframework.http.ResponseEntity;
-
 import java.util.List;
 
 public interface ICategoryController {
-     List<DtoCategory> categoryList();
-    ResponseEntity<Category> deleteCategory();
 
+    ResponseEntity<List<DtoCategory>> categoryList(String authHeader);
+
+    ResponseEntity<DtoCategory> saveCategory(DtoCategoryIU iu, String authHeader);
+
+    ResponseEntity<Void> deletingCategory(Integer id, String authHeader);
+
+    ResponseEntity<DtoCategory> updateCategory(Integer id, DtoCategoryIU iu, String authHeader);
 }

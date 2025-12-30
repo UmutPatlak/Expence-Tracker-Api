@@ -1,27 +1,20 @@
 package ExpenseTrackerApp.expensetrackerapp.dtos;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class DtoWallet {
-    @Getter
-    @Setter
+    private Integer id;
     private double account;
-    @Getter
-    @Setter
     private double wage;
-    @Getter
-    @Setter
     private double debt;
-    @Getter
+
     private LocalDateTime dateNow;
-    @Getter
-    @Setter
-    private List<DtoCategory> category;
-    @Getter
-    @Setter
-    private DtoUser dtoUser;
+    private Integer userId;
+    private List<Integer> categoryIds;
 }

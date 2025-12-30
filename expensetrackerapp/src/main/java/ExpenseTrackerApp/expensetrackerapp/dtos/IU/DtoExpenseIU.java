@@ -1,19 +1,15 @@
 package ExpenseTrackerApp.expensetrackerapp.dtos.IU;
 
 import ExpenseTrackerApp.expensetrackerapp.dtos.DtoCategory;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class DtoExpenseIU {
-    @Getter
-    @Setter
     private double expense;
-    @Getter
-    private LocalDateTime date;
-    @Getter
-    @Setter
-    private DtoCategory dtoCategory;
-
+    private Integer categoryId;
+    private Integer userId;
 }

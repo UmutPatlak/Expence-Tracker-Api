@@ -11,9 +11,9 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class DtoCategoryIU {
-    private String decsription;
+    private String description;
     private String description2;
-    private DtoWallet dtoWallet;
-    private List<DtoExpense> dtoExpense;
-
+    private Integer walletId;
+    private Integer userId;
 }
+

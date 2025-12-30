@@ -4,37 +4,61 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import java.util.Collection;
+import java.util.List;
+
 @Entity
 @Table(name = "_user")
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class User  {
-    @Id
+public class User implements UserDetails {
 
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private  int id;
-   @Column(name = "firstName", nullable = false)
-   private String firstName;
-   @Column(name = "lastName",nullable = false)
+    private Integer id;
+
+    @Column(nullable = false)
+    private String firstName;
+
+    @Column(nullable = false)
     private String lastName;
-   @Column(name = "fullName",nullable = false)
-    private String fullName;
-   @Column(name = "email",nullable = false)
+
+    @Column(nullable = false, unique = true)
     private String email;
-   @Column(name = "password", nullable = false)
+
+    @Column(nullable = false)
     private String password;
 
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "address_id")
+    private Address address;
 
-    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-   private Address address;
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "wallet_id")
+    private Wallet wallet;
+    @Column(name = "fullName", nullable = false)
+    private String fullName;
 
-
-    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    private Wallet wallet ;
-
-
-
+    public String getFullName() {
+        return firstName + " " + lastName;
     }
 
+    @Override
+    public String getUsername() {
+        return this.email;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of();
+    }
+
+    @Override public boolean isEnabled() { return true; }
+    @Override public boolean isAccountNonLocked() { return true; }
+    @Override public boolean isAccountNonExpired() { return true; }
+    @Override public boolean isCredentialsNonExpired() { return true; }
+}
